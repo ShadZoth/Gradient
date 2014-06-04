@@ -2,12 +2,8 @@ package ru.hse.se.g272.ervo.ooaip.gradient;
 
 import ru.hse.se.g272.ervo.ooaip.Form;
 
-import javax.swing.JButton;
-import javax.swing.JColorChooser;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import java.awt.Color;
-import java.awt.GridLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -37,23 +33,17 @@ public class GradForm extends Form {
         add(chooser);
         JPanel controls = new JPanel(new GridLayout(1, COMMAND_COUNT));
         final JButton firstButton = new JButton("Выбрать первый цвет");
-        firstButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent actionEvent) {
-                Color color = chooser.getColor();
-                rectangle.setFirst(color);
-                firstButton.setBackground(color);
-            }
+        firstButton.addActionListener(actionEvent -> {
+            Color color = chooser.getColor();
+            rectangle.setFirst(color);
+            firstButton.setBackground(color);
         });
         firstButton.setBackground(rectangle.getFirst());
         final JButton secondButton = new JButton("Выбрать второй цвет");
-        secondButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent actionEvent) {
-                Color color = chooser.getColor();
-                rectangle.setSecond(color);
-                secondButton.setBackground(color);
-            }
+        secondButton.addActionListener(actionEvent -> {
+            Color color = chooser.getColor();
+            rectangle.setSecond(color);
+            secondButton.setBackground(color);
         });
         secondButton.setBackground(rectangle.getSecond());
         final JTextField nField = new JTextField("Количество сегментов");
@@ -89,7 +79,7 @@ public class GradForm extends Form {
      */
     public static void main(final String[] args) {
         GradForm form = new GradForm();
-        form.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        form.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         form.setVisible(true);
         form.setDefaultSize(FULLSCREEN);
     }
